@@ -15,6 +15,18 @@
     .animate-fadeIn { opacity: 0; transform: translateY(40px); transition: all 0.7s cubic-bezier(.4,2,.6,1); }
     .animate-fadeIn.visible { opacity: 1; transform: none; }
     .timeline-dot { box-shadow: 0 0 0 4px #e0e7ff; }
+    @keyframes gradient-move {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animate-gradient-move {
+      background-size: 200% 200%;
+      animation: gradient-move 4s ease-in-out infinite;
+    }
+    .animate-pulse-slow {
+      animation: pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-gray-800">
@@ -23,18 +35,18 @@
     <div class="max-w-7xl mx-auto flex items-center justify-between px-2 sm:px-4 lg:px-10 py-2 sm:py-3 gap-4">
       <!-- Logo -->
       <div class="flex items-center pl-1 sm:pl-2 flex-shrink-0">
-        <img src="images/advcomm_Logo.png" alt="Logo" class="h-8 sm:h-12 md:h-20 w-auto transition-all duration-200" />
+        <img src="images/advcomm_Logo.png" alt="Logo" class="h-14 sm:h-14 mt-4 md:h-20 w-auto transition-all duration-200" />
       </div>
       <!-- Desktop Nav -->
-      <nav class="hidden lg:flex flex-1 justify-center gap-8 text-base font-semibold">
+      <nav class="hidden lg:flex flex-1 justify-end gap-8 text-base font-semibold">
         <a href="#about" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-indigo-600 after:transition-all after:duration-300 hover:after:w-full hover:text-indigo-700 transition">About</a>
-        <a href="#milestones" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-indigo-600 after:transition-all after:duration-300 hover:after:w-full hover:text-indigo-700 transition">Milestones</a>
-        <a href="#contact" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-indigo-600 after:transition-all after:duration-300 hover:after:w-full hover:text-indigo-700 transition">Contact</a>
+        <a href="#milestones" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-indigo-600 after:transition-all after:duration-300 hover:after:w-full hover:text-indigo-700 transition">Our Journey</a>
+        <a href="#footer" class="relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-indigo-600 after:transition-all after:duration-300 hover:after:w-full hover:text-indigo-700 transition">Contact</a>
       </nav>
       <!-- Desktop CTA -->
-      <a href="#contact" class="hidden lg:inline-block ml-6 px-6 py-2 rounded-full bg-indigo-600 text-white font-bold shadow hover:bg-indigo-700 transition text-base">Get in Touch</a>
+      <!-- <a href="#contact" class="hidden lg:inline-block ml-6 px-6 py-2 rounded-full bg-indigo-600 text-white font-bold shadow hover:bg-indigo-700 transition text-base">Get in Touch</a> -->
       <!-- Hamburger (Mobile) -->
-      <button class="lg:hidden ml-auto flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full hover:bg-indigo-100 transition group shadow focus:outline-none focus:ring-2 focus:ring-indigo-400" id="hamburger" aria-label="Open menu" aria-expanded="false" tabindex="0">
+      <button class="lg:hidden ml-auto flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full" id="hamburger" aria-label="Open menu" aria-expanded="false" tabindex="0">
         <svg class="w-8 h-8 sm:w-9 sm:h-9 text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
           <line id="ham-line-1" x1="5" y1="8" x2="19" y2="8" stroke-linecap="round" />
           <line id="ham-line-2" x1="5" y1="12" x2="19" y2="12" stroke-linecap="round" />
@@ -43,11 +55,11 @@
       </button>
     </div>
     <!-- Mobile Menu -->
-    <nav id="mobile-nav" class="lg:hidden hidden flex-col bg-white/95 shadow-2xl rounded-b-2xl w-full px-3 sm:px-6 py-5 sm:py-7 space-y-4 sm:space-y-5 mt-1 transition-all duration-300 ease-in-out backdrop-blur border-t border-indigo-100 z-40" aria-label="Mobile navigation">
-      <a href="#about" class="block text-indigo-700 font-bold text-lg sm:text-2xl py-3 sm:py-4 px-3 rounded hover:bg-indigo-50 transition">About</a>
-      <a href="#milestones" class="block text-indigo-700 font-bold text-lg sm:text-2xl py-3 sm:py-4 px-3 rounded hover:bg-indigo-50 transition">Milestones</a>
-      <a href="#contact" class="block text-indigo-700 font-bold text-lg sm:text-2xl py-3 sm:py-4 px-3 rounded hover:bg-indigo-50 transition">Contact</a>
-      <a href="#contact" class="w-full mt-3 px-4 py-3 rounded-full bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition text-center text-lg sm:text-xl shadow">Get in Touch</a>
+    <nav id="mobile-nav" class="lg:hidden hidden flex-col bg-gradient-to-b from-white/95 to-indigo-50/80 shadow-lg border-b border-indigo-100 z-50 backdrop-blur  w-full px-4 sm:px-6 py-5 sm:py-7 space-y-4 sm:space-y-1 mt-1 transition-all duration-300 ease-in-out backdrop-blur border-t border-indigo-100 z-40" aria-label="Mobile navigation: About, Our Journey, Contact">
+      <a href="#about" class="block text-indigo-700 font-bold text-lg sm:text-2xl  px-3 rounded hover:bg-indigo-50 transition">About</a>
+      <a href="#milestones" class="block text-indigo-700 font-bold text-lg sm:text-2xl  px-3 rounded hover:bg-indigo-50 transition">Our Journey</a>
+      <a href="#footer" class="block text-indigo-700 font-bold text-lg sm:text-2xl pb-6 px-3 rounded hover:bg-indigo-50 transition">Contact</a>
+      <!-- <a href="#contact" class="w-full mt-3 px-4 py-3 mt-8 rounded-full bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition text-center text-lg sm:text-xl shadow mb-6">Get in Touch</a> -->
     </nav>
   </header>
 
@@ -57,12 +69,12 @@
       <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900 mb-4 animate-fadeIn">
         Empowering Global Software Innovation Since 1997
       </h1>
-      <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl animate-fadeIn">
+      <p class="text-lg md:text-xl text-gray-700 mb-6 max-w-2xl animate-fadeIn">
         Advanced Communications is a Pakistan-based software house trusted by international clients for long-term software product development.
       </p>
-      <a href="#contact" class="inline-block px-8 py-3 rounded-full bg-indigo-600 text-white font-bold text-lg shadow hover:bg-indigo-700 transition animate-fadeIn">
+      <!-- <a href="#contact" class="inline-block px-8 py-3 rounded-full bg-indigo-600 text-white font-bold text-lg shadow hover:bg-indigo-700 transition animate-fadeIn">
         Get in Touch
-      </a>
+      </a> -->
       <div class="max-w-3xl mx-auto mt-12 rounded-2xl overflow-hidden shadow-lg animate-fadeIn">
         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
              alt="Teamwork illustration"
@@ -72,79 +84,125 @@
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-20 px-4 bg-white animate-fadeIn">
-    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-      <div class="bg-indigo-50 rounded-xl p-8 shadow text-center md:text-left">
-        <h2 class="text-2xl font-bold text-indigo-700 mb-2">advcomm.net</h2>
-        <p class="text-gray-700 font-semibold">Advanced Communications is a Pakistan based software house that specializes in working with international clients for their long term ‘software product development needs’.</p>
+  <section id="about" class="py-20 px-4 bg-gradient-to-br from-indigo-50 via-white to-indigo-100/60 animate-fadeIn">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="bg-white/90 rounded-2xl p-8 shadow-xl text-center md:text-left border border-indigo-100 relative overflow-hidden group transition-all duration-300">
+        <div class="flex justify-center md:justify-start mb-4">
+          <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-indigo-100 text-indigo-600 shadow-lg text-3xl">
+            <i class="fa-solid fa-building"></i>
+          </span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-indigo-700 mb-2 tracking-tight">advcomm.net</h2>
+        <p class="text-gray-700 font-semibold text-base sm:text-lg mb-2">Advanced Communications is a Pakistan based software house that specializes in working with international clients for their long term <span class="text-indigo-600 font-bold">‘software product development needs’</span>.</p>
+        <div class="flex flex-wrap gap-2 justify-center md:justify-start mt-4">
+          <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold">Since 1997</span>
+          <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold">Global Clients</span>
+          <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold">24x7 Support</span>
+        </div>
       </div>
-      <div class="space-y-4 text-gray-700">
-        <p>With almost all customers, we engage in the incubation and ideation stage of their products and then continue to work with them post production and support.</p>
-        <p>For some customers we also run a 24x7 support center with subject matter experts sitting on support desk all the time.</p>
-        <p>We started in 1997 and continue to work with many of our long-term clients. Most company names are anonymized for their preference.</p>
+      <div class="space-y-4 text-gray-700 text-base sm:text-lg bg-white/80 rounded-2xl p-6 shadow-md border border-indigo-50 transition-all duration-300">
+        <p><span class="font-bold text-indigo-700">Incubation & Ideation:</span> With almost all customers, we engage in the incubation and ideation stage of their products and then continue to work with them post production and support.</p>
+        <p><span class="font-bold text-indigo-700">Expert Support:</span> For some customers we also run a 24x7 support center with subject matter experts sitting on support desk all the time.</p>
+        <p><span class="font-bold text-indigo-700">Long-term Partnerships:</span> We started in 1997 and continue to work with many of our long-term clients. Most company names are anonymized for their preference.</p>
       </div>
     </div>
   </section>
 
   <!-- Milestones / Timeline Section -->
-  <section id="milestones" class="py-20 px-4 bg-slate-50 animate-fadeIn">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12 text-indigo-700">Key Milestones & Achievements</h2>
-      <ol class="relative border-l-4 border-indigo-200">
-        <li class="mb-10 ml-6 animate-fadeIn">
-          <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 timeline-dot"></span>
-          <span class="font-bold text-indigo-700">2020:</span> Built a “Deep Package Inspection” gateway for a client in Canada. The packet would implement blacklists for a number of reasons. Both upstream and downstream data was inspected. The device was also available as a CPE running on small IoT Linux devices.
+  <section id="milestones" class="py-20 px-4 bg-white animate-fadeIn">
+    <div class=" mx-auto">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-10 text-indigo-800 tracking-tight">Our Journey & Achievements</h2>
+      <ul class="space-y-8 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
+        <li class="bg-indigo-50 rounded-xl shadow p-6 animate-fadeIn">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-2xl font-extrabold text-indigo-700">2020</span>
+            <span class="text-base font-semibold text-indigo-500">Deep Package Inspection</span>
+          </div>
+          <p class="text-lg text-gray-800 font-medium leading-relaxed">Built a “Deep Package Inspection” gateway for a client in Canada. The packet would implement blacklists for a number of reasons. Both upstream and downstream data was inspected. The device was also available as a CPE running on small IoT Linux devices.</p>
         </li>
-        <li class="mb-10 ml-6 animate-fadeIn">
-          <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 timeline-dot"></span>
-          <span class="font-bold text-indigo-700">2014:</span> Delivered a “Service Delivery Platform” for our Canadian client that handled ‘money transfer services’ for two GSM operators in Africa. The platform is still in operation delivering around 8 million transactions per day.
+        <li class="bg-indigo-50 rounded-xl shadow p-6 animate-fadeIn">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-2xl font-extrabold text-indigo-700">2014</span>
+            <span class="text-base font-semibold text-indigo-500">Service Delivery Platform</span>
+          </div>
+          <p class="text-lg text-gray-800 font-medium leading-relaxed">Delivered a “Service Delivery Platform” for our Canadian client that handled ‘money transfer services’ for two GSM operators in Africa. The platform is still in operation delivering around 8 million transactions per day.</p>
         </li>
-        <li class="mb-10 ml-6 animate-fadeIn">
-          <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 timeline-dot"></span>
-          <span class="font-bold text-indigo-700">2011:</span> Upgraded the Wi-Max solution to support 4G services including a PCRF and HSS solution in addition to end-to-end device provisioning solutions including CPEs.
+        <li class="bg-indigo-50 rounded-xl shadow p-6 animate-fadeIn">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-2xl font-extrabold text-indigo-700">2011</span>
+            <span class="text-base font-semibold text-indigo-500">4G Upgrade</span>
+          </div>
+          <p class="text-lg text-gray-800 font-medium leading-relaxed">Upgraded the Wi-Max solution to support 4G services including a PCRF and HSS solution in addition to end-to-end device provisioning solutions including CPEs.</p>
         </li>
-        <li class="mb-10 ml-6 animate-fadeIn">
-          <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 timeline-dot"></span>
-          <span class="font-bold text-indigo-700">2010:</span> Designed a telecom billing solution for Wi-Max operators. The solution would provide real-time prepaid billing and would integrate with voice and data networks at the same time and manage balance in a single wallet. The solution was deployed in Wateen telecom (Abu Dhabi Group) and Wi-Tribe (Qatar Telecom subsidiary)
+        <li class="bg-indigo-50 rounded-xl shadow p-6 animate-fadeIn">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-2xl font-extrabold text-indigo-700">2010</span>
+            <span class="text-base font-semibold text-indigo-500">Billing Solution</span>
+          </div>
+          <p class="text-lg text-gray-800 font-medium leading-relaxed">Designed a telecom billing solution for Wi-Max operators. The solution would provide real-time prepaid billing and would integrate with voice and data networks at the same time and manage balance in a single wallet. The solution was deployed in Wateen telecom (Abu Dhabi Group) and Wi-Tribe (Qatar Telecom subsidiary)</p>
         </li>
-        <li class="mb-10 ml-6 animate-fadeIn">
-          <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 timeline-dot"></span>
-          <span class="font-bold text-indigo-700">2008:</span> A hosted VoIP service. Based on the AdvancedVoIP.com product. The service was live till 2009.
+        <li class="bg-indigo-50 rounded-xl shadow p-6 animate-fadeIn">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-2xl font-extrabold text-indigo-700">2008</span>
+            <span class="text-base font-semibold text-indigo-500">Hosted VoIP</span>
+          </div>
+          <p class="text-lg text-gray-800 font-medium leading-relaxed">A hosted VoIP service. Based on the AdvancedVoIP.com product. The service was live till 2009.</p>
         </li>
-        <li class="mb-10 ml-6 animate-fadeIn">
-          <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 timeline-dot"></span>
-          <span class="font-bold text-indigo-700">2006:</span> Launched a basic web hosting service with the name HostAutomate.com
+        <li class="bg-indigo-50 rounded-xl shadow p-6 animate-fadeIn">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-2xl font-extrabold text-indigo-700">2006</span>
+            <span class="text-base font-semibold text-indigo-500">Web Hosting</span>
+          </div>
+          <p class="text-lg text-gray-800 font-medium leading-relaxed">Launched a basic web hosting service with the name HostAutomate.com</p>
         </li>
-        <li class="mb-10 ml-6 animate-fadeIn">
-          <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 timeline-dot"></span>
-          <span class="font-bold text-indigo-700">2005:</span> Designed and delivered a lawful intercept solution. The solution accumulated CDRs from all the national telecom vendors and run detailed analytics with special consideration to LEAs.
+        <li class="bg-indigo-50 rounded-xl shadow p-6 animate-fadeIn">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-2xl font-extrabold text-indigo-700">2005</span>
+            <span class="text-base font-semibold text-indigo-500">Lawful Intercept</span>
+          </div>
+          <p class="text-lg text-gray-800 font-medium leading-relaxed">Designed and delivered a lawful intercept solution. The solution accumulated CDRs from all the national telecom vendors and run detailed analytics with special consideration to LEAs.</p>
         </li>
-        <li class="mb-10 ml-6 animate-fadeIn">
-          <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 timeline-dot"></span>
-          <span class="font-bold text-indigo-700">2004:</span> Design an Interconnect Billing Solution and a Converged Retail billing solution. The product was deployed in multiple international telecoms including Malaysia Telecom, Orascom Telecom, Softel (Germany) and others.
+        <li class="bg-indigo-50 rounded-xl shadow p-6 animate-fadeIn">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-2xl font-extrabold text-indigo-700">2004</span>
+            <span class="text-base font-semibold text-indigo-500">Billing Solutions</span>
+          </div>
+          <p class="text-lg text-gray-800 font-medium leading-relaxed">Design an Interconnect Billing Solution and a Converged Retail billing solution. The product was deployed in multiple international telecoms including Malaysia Telecom, Orascom Telecom, Softel (Germany) and others.</p>
         </li>
-        <li class="mb-10 ml-6 animate-fadeIn">
-          <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 timeline-dot"></span>
-          <span class="font-bold text-indigo-700">2003:</span> BeyondPhone.com A VoIP Service that was offered with brand name of ‘AdCalls’. Featured in Wall Street Journal and other magazines, the service was one of the first apps worldwide that had an Ads based revenue model while using were making free calls. The service operated till 2005.
+        <li class="bg-indigo-50 rounded-xl shadow p-6 animate-fadeIn">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-2xl font-extrabold text-indigo-700">2003</span>
+            <span class="text-base font-semibold text-indigo-500">VoIP Service</span>
+          </div>
+          <p class="text-lg text-gray-800 font-medium leading-relaxed">BeyondPhone.com A VoIP Service that was offered with brand name of ‘AdCalls’. Featured in Wall Street Journal and other magazines, the service was one of the first apps worldwide that had an Ads based revenue model while using were making free calls. The service operated till 2005.</p>
         </li>
-        <li class="mb-10 ml-6 animate-fadeIn">
-          <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 timeline-dot"></span>
-          <span class="font-bold text-indigo-700">1999:</span> Released the first set of ASP components under the name ASPFusion.com
+        <li class="bg-indigo-50 rounded-xl shadow p-6 animate-fadeIn">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-2xl font-extrabold text-indigo-700">1999</span>
+            <span class="text-base font-semibold text-indigo-500">ASP Components</span>
+          </div>
+          <p class="text-lg text-gray-800 font-medium leading-relaxed">Released the first set of ASP components under the name ASPFusion.com</p>
         </li>
-        <li class="mb-10 ml-6 animate-fadeIn">
-          <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 timeline-dot"></span>
-          <span class="font-bold text-indigo-700">1997:</span> AdvancedVoIP.com Started to work on a VoIP billing system integrated with open source softswitch system. First version was released in 1999 and the product was used by more than 400 VoIP providers worldwide and continued to operate till 2009.
+        <li class="bg-indigo-50 rounded-xl shadow p-6 animate-fadeIn">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-2xl font-extrabold text-indigo-700">1997</span>
+            <span class="text-base font-semibold text-indigo-500">VoIP Billing</span>
+          </div>
+          <p class="text-lg text-gray-800 font-medium leading-relaxed">AdvancedVoIP.com Started to work on a VoIP billing system integrated with open source softswitch system. First version was released in 1999 and the product was used by more than 400 VoIP providers worldwide and continued to operate till 2009.</p>
         </li>
-        <li class="mb-10 ml-6 animate-fadeIn">
-          <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 timeline-dot"></span>
-          <span class="font-bold text-indigo-700">1997:</span> Started work on a web hosting automation platform and delivered a ‘control panel’ in 1999. The product was used and is continued to be used by hundreds of data centers and web service providers.
+        <li class="bg-indigo-50 rounded-xl shadow p-6 animate-fadeIn">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-2xl font-extrabold text-indigo-700">1997</span>
+            <span class="text-base font-semibold text-indigo-500">Hosting Platform</span>
+          </div>
+          <p class="text-lg text-gray-800 font-medium leading-relaxed">Started work on a web hosting automation platform and delivered a ‘control panel’ in 1999. The product was used and is continued to be used by hundreds of data centers and web service providers.</p>
         </li>
-      </ol>
+      </ul>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 px-4 bg-white animate-fadeIn">
+  <!-- <section id="contact" class="py-20 px-4 bg-white animate-fadeIn">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-3xl font-bold mb-6 text-indigo-700">Contact Us</h2>
       <form class="grid gap-4" onsubmit="event.preventDefault(); alert('Thanks! We will contact you.');">
@@ -160,12 +218,55 @@
         <p class="mt-2">24x7 support center with subject matter experts available.</p>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Footer -->
-  <footer class="mt-24 bg-indigo-900 py-8 text-center text-sm text-white">
-    <p>© 1997–2025 Advanced Communications — Pioneering software innovation for global clients.</p>
-  </footer>
+ <footer id="footer" class="bg-gradient-to-br from-white via-gray-50 to-white py-12 px-4 text-gray-800 border-t border-indigo-100 shadow-inner">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+    
+    <!-- Left Column: Logo & Tagline -->
+    <div class="flex flex-col items-start text-left">
+      <img src="images/advcomm_Logo.png" alt="Advanced Communications Logo" class="h-14 lg:h-20 w-auto mb-3" />
+      <p class="text-sm md:text-base max-w-xs">Advanced Communications is a Pakistan-based software house trusted by international clients for long-term software product development.</p>
+    </div>
+
+    <!-- Middle Column: Navigation Links -->
+    <div class="flex flex-col items-start text-left bg-white/80 rounded-xl shadow p-6 w-full border border-indigo-100">
+      <h3 class="text-xl font-bold text-gray-900 mb-2">Quick Links</h3>
+      <ul class="space-y-1 text-sm md:text-base">
+        <li><a href="#about" class="hover:text-indigo-600 font-medium transition">About</a></li>
+        <li><a href="#milestones" class="hover:text-indigo-600 font-medium transition">Our Journey</a></li>
+        <!-- <li><a href="#footer" class="hover:text-indigo-600 font-medium transition">Contact</a></li> -->
+      </ul>
+    </div>
+
+    <!-- Right Column: Address & Contact -->
+    <div class="flex flex-col items-start text-left bg-white/80 rounded-xl shadow p-6 w-full border border-indigo-100">
+      <h3 class="text-xl font-bold text-gray-900 mb-2">Contact Us</h3>
+      <p class="font-semibold">Advanced Communications</p>
+      <div class="border-b border-indigo-100 w-full my-2"></div>
+      <p class="text-sm md:text-base leading-relaxed text-gray-700">
+        UB. 006, Block 3<br />
+        Savoy Residential<br />
+        F-11/1 Islamabad
+      </p>
+      <div class="border-b border-indigo-100 w-full my-2"></div>
+      <p class="text-sm md:text-base mt-2">
+        <span class="font-semibold">Email:</span>
+        <a href="mailto:info@advcomm.net" class="underline text-indigo-600 hover:text-indigo-800 break-words">info@advcomm.net</a>
+      </p>
+      <p class="text-sm md:text-base">
+        <span class="font-semibold">Phone:</span>
+        <a href="tel:+92512213248" class="underline text-indigo-600 hover:text-indigo-800">+92-51-221-3248</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Bottom Text -->
+  <p class="text-xs md:text-sm text-gray-500 text-center mt-10">
+    © 1997–2025 Advanced Communications — Pioneering software innovation for global clients.
+  </p>
+</footer>
 
   <script>
     // Animate on Scroll
@@ -221,6 +322,46 @@
         }});
       }
     });
+    // Close mobile nav when any link is clicked
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (menuOpen) {
+          menuOpen = false;
+          hamburger.setAttribute('aria-expanded', false);
+          gsap.to(line1, { duration: 0.3, attr: { x1: 5, y1: 8, x2: 19, y2: 8 }, stroke: '#4f46e5' });
+          gsap.to(line2, { duration: 0.3, opacity: 1 });
+          gsap.to(line3, { duration: 0.3, attr: { x1: 5, y1: 16, x2: 19, y2: 16 }, stroke: '#4f46e5' });
+          gsap.to(mobileNav, { y: -40, opacity: 0, duration: 0.3, ease: 'power2.in', onComplete: () => {
+            mobileNav.classList.add('hidden');
+            gsap.set(mobileNav, { clearProps: 'all' });
+          }});
+        }
+      });
+    });
   </script>
+  <script>
+// Responsive smooth scroll for anchor links with header offset and hamburger close
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetId = this.getAttribute('href').slice(1);
+    const target = document.getElementById(targetId);
+    if (target) {
+      e.preventDefault();
+      // Use a fixed offset for header (works for all devices)
+      const offset = 80; // px, adjust as needed for your header
+      const rect = target.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const top = rect.top + scrollTop - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+      // If mobile nav is open, close it after scroll
+      const mobileNav = document.getElementById('mobile-nav');
+      const hamburger = document.getElementById('hamburger');
+      if (mobileNav && hamburger && !mobileNav.classList.contains('hidden')) {
+        hamburger.click();
+      }
+    }
+  });
+});
+</script>
 </body>
 </html>
